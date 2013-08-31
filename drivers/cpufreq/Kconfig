@@ -181,12 +181,6 @@ config CPU_FREQ_DEFAULT_GOV_LULZACTIVE
 	help
 	Use the CPUFreq governor 'lulzactive' as default.
 
-config CPU_FREQ_DEFAULT_GOV_BRAZILIANWAX
-	bool "brazilianwax"
-	select CPU_FREQ_GOV_BRAZILIANWAX
-	help
-	Use the CPUFreq governor 'brazilianwax as default.
-
 config CPU_FREQ_DEFAULT_GOV_HYPER
         bool "hyper"
         select CPU_FREQ_GOV_HYPER
@@ -397,12 +391,6 @@ config CPU_FREQ_GOV_LULZACTIVE
 	depends on CPU_FREQ
 	help
 	'lulzactive' - a "funny" optimized governor
-
-config CPU_FREQ_GOV_BRAZILIANWAX
-	tristate "'brazilianwax' cpufreq governor"
-	depends on CPU_FREQ
-	help
-	'brazilianwax' - a "slightly more agressive smart" optimized governor!
 
 config CPU_FREQ_GOV_HYPER
         tristate "'hyper' cpufreq governor"
