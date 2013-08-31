@@ -175,6 +175,18 @@ config CPU_FREQ_DEFAULT_GOV_LAGFREE
 	help
 	Use the CPUFreq governor 'lagfree' as default.
 
+config CPU_FREQ_DEFAULT_GOV_LULZACTIVE
+	bool "lulzactive"
+	select CPU_FREQ_GOV_LULZACTIVE
+	help
+	Use the CPUFreq governor 'lulzactive' as default.
+
+config CPU_FREQ_DEFAULT_GOV_BRAZILIANWAX
+	bool "brazilianwax"
+	select CPU_FREQ_GOV_BRAZILIANWAX
+	help
+	Use the CPUFreq governor 'brazilianwax as default.
+
 endchoice
 
 config CPU_FREQ_GOV_PERFORMANCE
@@ -373,6 +385,18 @@ config CPU_FREQ_GOV_WHEATLEY
 config CPU_FREQ_GOV_LAGFREE
 	tristate "'lagfree' cpufreq governor"
 	depends on CPU_FREQ
+
+config CPU_FREQ_GOV_LULZACTIVE
+	tristate "'lulzactive' cpufreq governor"
+	depends on CPU_FREQ
+	help
+	'lulzactive' - a "funny" optimized governor
+
+config CPU_FREQ_GOV_BRAZILIANWAX
+	tristate "'brazilianwax' cpufreq governor"
+	depends on CPU_FREQ
+	help
+	'brazilianwax' - a "slightly more agressive smart" optimized governor!
 
 menu "x86 CPU frequency scaling drivers"
 depends on X86
