@@ -158,16 +158,6 @@ config CPU_FREQ_DEFAULT_GOV_INTELLIDEMAND
 	help
 	Use the CPUFreq governor 'intellidemand' as default. 	This is based on Ondemand with browsing detection based on GPU loading
 
-config CPU_FREQ_DEFAULT_GOV_PEGASUSQ
-	bool "pegasusq"
-	select CPU_FREQ_GOV_PEGASUSQ 
-
-config CPU_FREQ_DEFAULT_GOV_WHEATLEY
-	bool "wheatley"
-	select CPU_FREQ_GOV_WHEATLEY
-	select CPU_FREQ_GOV_PERFORMANCE
-	help
-
 config CPU_FREQ_DEFAULT_GOV_LAGFREE
 	bool "lagfree"
 	select CPU_FREQ_GOV_LAGFREE
@@ -373,14 +363,6 @@ config CPU_FREQ_GOV_INTELLIDEMAND
 	tristate "'intellidemand' cpufreq policy governor"
 	select CPU_FREQ_TABLE
 	help
-
-config CPU_FREQ_GOV_PEGASUSQ
-	tristate "'pegasusq' cpufreq policy governor"
-	help
-
-config CPU_FREQ_GOV_WHEATLEY
-	tristate "'wheatley' cpufreq governor"
-	depends on CPU_FREQ
 
 config CPU_FREQ_GOV_LAGFREE
 	tristate "'lagfree' cpufreq governor"
