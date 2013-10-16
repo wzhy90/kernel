@@ -3,7 +3,7 @@
 # If you've got the toolchain in a non-standard location
 # (e.g., youre using Linaro), uncomment the next line
 # and specify the toolchain's root here
-#CROSS_COMPILE=../linaro-toolchain
+#TOOLCHAIN_PATH=../linaro-toolchain
 
 # Kernel tag/label. Mostly for showing off :P
 LOCALVERSION="Kernel755-OpenSEMC-derived"
