@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# If you've got the toolchain in a non-standard location
-# (e.g., youre using Linaro), uncomment the next line
-# and specify the toolchain's root here
-#TOOLCHAIN_PATH=../linaro-toolchain
-
 # Kernel tag/label. Mostly for showing off :P
 LOCALVERSION="Kernel755-OpenSEMC-derived"
 
@@ -14,14 +9,14 @@ LOCALVERSION="Kernel755-OpenSEMC-derived"
 
 MKELF=scripts/mkelf.py
 
-[ -z "$TOOLCHAIN_PATH" ] && TOOLCHAIN_PATH=/usr
+[ -z "$TOOLCHAIN_PREFIX" ] && TOOLCHAIN_PREFIX=/usr
 
 export LOCALVERSION="-"`echo $LOCALVERSION`
-export CROSS_COMPILE=$TOOLCHAIN_PATH/bin/arm-linux-gnueabihf-
+export CROSS_COMPILE=$TOOLCHAIN_PREFIX/bin/arm-linux-gnueabihf-
 export ARCH=arm
 
 if [ ! -e ${CROSS_COMPILE}gcc ]; then
-	echo "ARM(hf) GCC not found on the configured TOOLCHAIN PATH."
+	echo "ARM(hf) GCC not found on toolchain path (TOOLCHAIN_PREFIX env var)."
 	echo "Make sure the you've installed the ARM GCC Cross-compiler"
 	echo "on path: $TOOLCHAIN_PATH"
 	echo "Bailing out..."
@@ -29,6 +24,7 @@ if [ ! -e ${CROSS_COMPILE}gcc ]; then
 	exit 1;
 fi
 
+echo "TOOLCHAIN_PREFIX="$TOOLCHAIN_PREFIX
 echo "LOCALVERSION="$LOCALVERSION
 echo "CROSS_COMPILE="$CROSS_COMPILE
 echo "ARCH="$ARCH
