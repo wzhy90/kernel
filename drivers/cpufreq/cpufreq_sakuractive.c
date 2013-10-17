@@ -379,7 +379,7 @@ dbs_info = &per_cpu(hp_cpu_dbs_info, j);
 dbs_info->prev_cpu_idle = get_cpu_idle_time(j,
 &dbs_info->prev_cpu_wall);
 if (dbs_tuners_ins.ignore_nice)
-dbs_info->prev_cpu_nice = kstat_cpu(j).cpustat.nice;
+dbs_info->prev_cpu_nice = kcpustat_cpu(j).cpustat[CPUTIME_NICE];
 
 }
 mutex_unlock(&dbs_mutex);
@@ -676,7 +676,7 @@ j_dbs_info->prev_cpu_idle = get_cpu_idle_time(j,
 &j_dbs_info->prev_cpu_wall);
 if (dbs_tuners_ins.ignore_nice) {
 j_dbs_info->prev_cpu_nice =
-kstat_cpu(j).cpustat.nice;
+kcpustat_cpu(j).cpustat[CPUTIME_NICE];
 }
 
 max_periods = max(DEFAULT_HOTPLUG_IN_SAMPLING_PERIODS,
