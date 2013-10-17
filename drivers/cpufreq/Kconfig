@@ -141,6 +141,12 @@ config CPU_FREQ_DEFAULT_GOV_SMARTASS2
 	help
 	Use the CPUFreq governor 'smartassV2' as default.
 
+config CPU_FREQ_DEFAULT_GOV_SAKURACTIVE
+    bool "sakuractive"
+    select CPU_FREQ_GOV_SAKURACTIVE
+    help
+     If in doubt, say N.
+
 config CPU_FREQ_DEFAULT_GOV_NIGHTMARE
 	bool "nightmare"
 	select CPU_FREQ_GOV_NIGHTMARE
@@ -349,6 +355,11 @@ config CPU_FREQ_GOV_SMARTASS2
 	help
 	'smartassV2' - a "smart" optimized governor!
 	If in doubt, say N.
+
+config CPU_FREQ_GOV_SAKURACTIVE
+    tristate "'sakuractive' cpufreq governor"
+    depends on CPU_FREQ
+    help
 
 config CPU_FREQ_GOV_NIGHTMARE
 	tristate "'nightmare' cpufreq governor"
