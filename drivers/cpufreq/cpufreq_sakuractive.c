@@ -471,13 +471,13 @@ j_dbs_info = &per_cpu(hp_cpu_dbs_info, j);
 cur_idle_time = get_cpu_idle_time(j, &cur_wall_time);
 
 /* how much wall time has passed since last iteration? */
-wall_time = (unsigned int) cputime64_sub(cur_wall_time,
-j_dbs_info->prev_cpu_wall);
+wall_time = (unsigned int)
+				(cur_wall_time - j_dbs_info->prev_cpu_wall);
 j_dbs_info->prev_cpu_wall = cur_wall_time;
 
 /* how much idle time has passed since last iteration? */
-idle_time = (unsigned int) cputime64_sub(cur_idle_time,
-j_dbs_info->prev_cpu_idle);
+idle_time = (unsigned int)
+				(cur_idle_time - j_dbs_info->prev_cpu_idle);
 j_dbs_info->prev_cpu_idle = cur_idle_time;
 
 if (unlikely(!wall_time || wall_time < idle_time))
@@ -597,7 +597,7 @@ mutex_unlock(&dbs_mutex);
 return;
 }
 
-static void do_cpu_up(struct work_struct *work)
+static void __ref do_cpu_up(struct work_struct *work)
 {
 cpu_up(1);
 }
